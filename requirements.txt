@@ -1,7 +1,6 @@
 
 
-pickle
-matplotlib
+picklematplotlib
 nltk
 notebook
 numpy
