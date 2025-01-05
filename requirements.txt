@@ -1,11 +1,7 @@
-
-
-picklematplotlib
-nltk
-notebook
-numpy
-pandas
-requests
-scikit-learn
-scipy
 streamlit
+pandas
+numpy
+sklearn
+flask
+plotly
+seaborn
