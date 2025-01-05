@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 import requests
-import py7zr  # For handling .7z compressed files
+
 
 # Function to fetch the movie poster using TMDB API
 def fetch_poster(movie_id):
@@ -42,24 +42,13 @@ def recommend(movie):
         return [], []
 
 
-# Function to extract and load similarity matrix from .7z file
-@st.cache
-def load_similarity():
-    with py7zr.SevenZipFile('similarity.7z', mode='r') as archive:
-        archive.extractall()  # Extract all files in the current directory
-    with open('similarity.pkl', 'rb') as file:
-        return pickle.load(file)
-
 
 # Load data
 movies_dictt = pickle.load(open('movie_dictt.pkl', 'rb'))
 movies = pd.DataFrame(movies_dictt)
 
-# Load similarity matrix
-try:
-    similarity = pickle.load(open('similarity.pkl', 'rb'))
-except FileNotFoundError:
-    similarity = load_similarity()
+similarity = pickle.load(open('similarity.pkl', 'rb'))
+
 
 # Streamlit app
 st.title('Movie Recommender System')
